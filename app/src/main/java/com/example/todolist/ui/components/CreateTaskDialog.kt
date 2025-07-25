@@ -71,7 +71,7 @@ fun CreateTaskDialog(
                     .width(300.dp),
                 value = edCreateNoteName,
                 onValueChange = { edCreateNoteName = it },
-                label = { Text(text = "Name of the note", color=LightGray) },
+                label = { Text(text = "Name of the task", color=LightGray) },
                 shape = RoundedCornerShape(12.dp),
 
                 colors = OutlinedTextFieldDefaults.colors(
@@ -90,7 +90,7 @@ fun CreateTaskDialog(
                     .width(300.dp),
                 value = edCreateNoteDescription,
                 onValueChange = { edCreateNoteDescription = it },
-                label = { Text(text = "Description of the note", color=LightGray) },
+                label = { Text(text = "Description of the task", color=LightGray) },
                 shape = RoundedCornerShape(12.dp),
 
                 colors = OutlinedTextFieldDefaults.colors(
