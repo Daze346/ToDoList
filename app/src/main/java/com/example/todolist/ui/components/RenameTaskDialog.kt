@@ -88,7 +88,7 @@ fun RenameTaskDialog(
 
             OutlinedTextField(
                 modifier = Modifier
-                    .heightIn(min = 40.dp)
+                    .heightIn(min = 40.dp, max = 80.dp)
                     .width(300.dp),
                 value = edNewNoteDescription,
                 onValueChange = { edNewNoteDescription = it },
@@ -101,8 +101,7 @@ fun RenameTaskDialog(
                     focusedTextColor = Color.White,
                     unfocusedTextColor = LightGray,
                     cursorColor = LightGray
-                ),
-                singleLine = true
+                )
             )
         }
 

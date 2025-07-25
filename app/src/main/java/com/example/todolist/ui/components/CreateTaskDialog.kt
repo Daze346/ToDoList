@@ -86,7 +86,7 @@ fun CreateTaskDialog(
 
             OutlinedTextField(
                 modifier = Modifier
-                    .heightIn(min = 40.dp)
+                    .heightIn(min = 40.dp, max = 80.dp)
                     .width(300.dp),
                 value = edCreateNoteDescription,
                 onValueChange = { edCreateNoteDescription = it },
@@ -99,8 +99,7 @@ fun CreateTaskDialog(
                     focusedTextColor = Color.White,
                     unfocusedTextColor = LightGray,
                     cursorColor = LightGray
-                ),
-                singleLine = true
+                )
             )
         }
 
