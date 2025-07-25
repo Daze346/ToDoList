@@ -8,7 +8,14 @@ import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 
 @Composable
-fun TasksList(modifier: Modifier, tasks: List<Task>, onTaskChecked: (Task) -> Unit, onDelete: (Task) -> Unit){
+fun TasksList(
+    modifier: Modifier,
+    tasks: List<Task>,
+    onTaskChecked: (Task) -> Unit,
+    onDelete: (Task) -> Unit,
+    returnTask: (Task) -> Unit
+
+    ) {
 
     LazyColumn(
         modifier = modifier
@@ -17,7 +24,8 @@ fun TasksList(modifier: Modifier, tasks: List<Task>, onTaskChecked: (Task) -> Un
             TaskItem(
                 task = task,
                 onCheckedChange = { onTaskChecked(task) },
-                onDelete = { onDelete(task) }
+                onDelete = { onDelete(task) },
+                returnTask = returnTask
             )
         }
     }

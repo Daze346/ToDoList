@@ -1,6 +1,7 @@
 package com.example.todolist.ui.components
 
 import Task
+import android.util.Log
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
@@ -29,11 +30,19 @@ import com.example.todolist.R
 import com.example.todolist.ui.theme.DarkGray
 
 @Composable
-fun TaskItem(task: Task, onCheckedChange: (Boolean) -> Unit, onDelete: (Task) -> Unit) {
+fun TaskItem(
+    task: Task,
+    onCheckedChange: (Boolean) -> Unit,
+    onDelete: (Task) -> Unit,
+    returnTask: (Task) -> Unit
+) {
 
     Row(
         modifier = Modifier
             .padding(start = 20.dp, end = 20.dp, top = 5.dp, bottom = 5.dp)
+            .clickable(
+                onClick = { returnTask(task) }
+            )
             .background(
                 color = DarkGray,
                 shape = RoundedCornerShape(8.dp)

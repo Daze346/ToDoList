@@ -23,4 +23,7 @@ interface TaskDao{
     @Query(value = "UPDATE tasks SET isCompleted = 0 WHERE id = :taskId")
     fun setUncompleted(taskId: Long)
 
+    @Query(value = "UPDATE tasks SET title = :title, description = :description WHERE id = :taskId")
+    fun renameTask(title: String, description: String, taskId: Long)
+
 }

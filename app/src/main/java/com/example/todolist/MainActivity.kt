@@ -25,6 +25,7 @@ import androidx.compose.ui.graphics.toArgb
 import com.example.todolist.ui.theme.*
 
 import Task
+import android.util.Log
 import com.example.todolist.ui.components.*
 
 
@@ -50,6 +51,8 @@ class MainActivity : ComponentActivity() {
             val tasksState = remember { mutableStateOf(emptyList<Task>()) }
 
             var showCreateTaskDialog by remember { mutableStateOf(false) }
+            var showRenameTaskDialog by remember { mutableStateOf(false) }
+            var currentTaskForRename: Task? = null
 
 
             LaunchedEffect(Unit) {
@@ -93,6 +96,13 @@ class MainActivity : ComponentActivity() {
                                         tasksState.value = updatedTasks
                                     }
                                 }
+                            },
+                            returnTask = { task ->
+
+                                showRenameTaskDialog = true
+                                currentTaskForRename = task
+
+
                             })
 
                         Footer(
@@ -121,6 +131,35 @@ class MainActivity : ComponentActivity() {
                             }
                         )
                     }
+
+                    if (showRenameTaskDialog && currentTaskForRename != null){
+                        RenameTaskDialog(
+                            modifier = Modifier.align(Alignment.Center),
+                            onClose = { showRenameTaskDialog = false },
+                            task = currentTaskForRename,
+                            renameNote = { newTaskTitle, newTaskDescription, task ->
+                                lifecycleScope.launch(Dispatchers.IO) {
+
+                                    databaseDao.renameTask(
+                                        title = newTaskTitle,
+                                        description = newTaskDescription,
+                                        taskId = task.id
+                                    )
+
+                                    val updatedTasks = databaseDao.getAllTasks()
+                                    withContext(Dispatchers.Main) {
+                                        tasksState.value = updatedTasks
+                                    }
+                                }
+                            }
+                        )
+                    }
+
+
+
+
+
+
                 }
             }
         }
