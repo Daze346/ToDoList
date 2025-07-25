@@ -69,7 +69,9 @@ class MainActivity : ComponentActivity() {
                         modifier = Modifier.fillMaxSize()
                     ) {
                         Header()
-                        TasksList(tasks = tasksState.value,
+                        TasksList(
+                            modifier = Modifier.weight(1f),
+                            tasks = tasksState.value,
                             onTaskChecked = {task ->
                                 lifecycleScope.launch(Dispatchers.IO) {
                                     if (task.isCompleted){ databaseDao.setUncompleted(task.id) }

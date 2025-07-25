@@ -34,7 +34,7 @@ fun Header(){
 
     ){
         Text(
-            text = "Notes",
+            text = "Tasks",
             fontSize = 35.sp,
             fontFamily = FontFamily(Font(R.font.nunito_bold)),
             color = Color.White

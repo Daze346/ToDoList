@@ -28,7 +28,7 @@ fun Footer(onNewNoteClick: () -> Unit){
         horizontalArrangement = Arrangement.End,
     ) {
         Text(
-            text = "New note",
+            text = "New task",
             color = Color.White,
             fontSize = 20.sp,
             modifier = Modifier
