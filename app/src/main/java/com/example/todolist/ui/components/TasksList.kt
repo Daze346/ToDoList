@@ -14,7 +14,6 @@ fun TasksList(
     onTaskChecked: (Task) -> Unit,
     onDelete: (Task) -> Unit,
     returnTask: (Task) -> Unit
-
     ) {
 
     LazyColumn(
